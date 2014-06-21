@@ -1,0 +1,282 @@
+a,input,button{ outline:none; }
+::-moz-focus-inner{border:0px;}
+.clear{
+	clear: both;
+}
+.pt10{
+	padding-top: 10px;
+}
+.autoline
+{
+  word-break: break-all;/*必须*/
+}
+.noline
+{
+	word-break: keep-all;/*必须*/
+}
+.main-logo{
+	background: url("../../images/t-logo.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+	display: inline-block;float: left;
+    height: 38px;
+    width: 38px;
+}
+.main-logo-font{
+	display: inline-block;float: left;
+  	width: 58px;line-height: 38px;
+    font-weight: bold;font-size: 19px;
+    margin: 0px 0px 0px 5px;
+}
+.main-logo-font:hover{
+	color: #f5f5f5;
+}
+#scrollUp {
+    background: url("../../images/top.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    bottom: 40px;
+    height: 38px;
+    right: 12px;
+    width: 38px;
+}
+
+
+
+
+i.icon-all{
+	display: inline-block;
+	width: 16px;height: 16px;
+	margin: 0px 4px ;
+	background: url("../../images/bg/icon-all.png") no-repeat;
+}
+i.icon-close{
+	background-position: -408px -72px;
+}
+i.icon-video{
+	background-position: -432px -48px;
+}
+i.icon-image{
+	background-position: -456px -48px;
+}
+i.icon-word{
+	background-position: -264px -24px;
+}
+i.icon-music{
+	background-position: -336px -24px;
+}
+.header{
+	width: 100%;height: 32px;
+	background-color: #ccc;
+	border-bottom: 1px #ddd solid;
+}
+ #nav{
+ 	position:fixed;
+ 	width:14.66%;height:100%;
+ 	border-right: 1px solid #ccc;
+    float: left;}
+#nav ul{display:block;width:80%;list-style:none}
+#nav li{list-style:none;width:100%;display:block;line-height: 2.4em;border-bottom: 1px #ccc solid}
+ #main{
+ 	position: relative;
+ 	width: 83.66%;height: 100%;
+ 	float: right;
+ 	
+ } 
+ .navbar-form-wrap{
+ 	width: 98%;height: 54px;background-color: #669999;
+ 	padding: 10px 0px;
+ 	border-radius: 5px;
+ 	border: 1px solid #669999;
+ 	margin: auto;
+ }
+.search-form-wrap{
+	width: 42%;height: 36px;
+	float: left;
+
+}
+.lable-wrap{
+	width: 48%;height: 36px;line-height: 36px;
+	float: left;
+	overflow: hidden;
+}
+.lable-s{
+	display: block; color: #CC0000;
+	font-size: 14px;font-weight: bold;
+	float: left;text-align: left;
+}
+a.lable-a{
+	text-decoration: none;
+	display: block;
+	width: auto;
+	padding: 3px 7px;
+	border-radius: 10px;
+    color: #428BCA;
+    font-size: 12px;
+    line-height: 17px;
+    background-color: #fff;
+    min-width: 10px;
+    margin: 6px 5px;
+    text-align: center;
+    vertical-align: baseline;
+    white-space: nowrap;
+    float: left;
+}
+.lable-more-wrap{
+	width: 10%;height: 36px;line-height: 36px;
+	float: left;
+}
+
+
+#main-content{
+	margin: auto;
+	width: 98%;height: auto;min-height: 400px;
+
+	padding: 20px 0px ;
+}
+.content-row{
+	width: 98%;margin: auto;
+	height: 240px;
+	border-top: 1px #ddd solid ;
+}
+.content-lf{
+	width: 33.33%;height: 100%;
+	float: left;
+}
+.content-ct{
+	width: 33.33%;height: 100%;
+	float: left;
+	border-left: 1px #ddd solid ;
+	border-right: 1px #ddd solid ;
+}
+.content-rf{
+	width: 33.33%;height: 100%;
+	float: left;
+
+}
+
+/*==========以下部分是Validform必须的===========*/
+.Validform_checktip{
+	line-height:46px;
+	height:46px;
+	overflow:hidden;
+	color:#999;
+	font-size:14px;
+}
+.Validform_right{
+	color:#71b83d;
+	padding-left:20px;
+	background:url(../images/right.png) no-repeat left center;
+}
+.Validform_wrong{
+	color:red;
+	padding-left:20px;
+	white-space:nowrap;
+	background:url(../images/error.png) no-repeat left center;
+}
+.Validform_loading{
+	padding-left:20px;
+	background:url(../images/onLoad.gif) no-repeat left center;
+}
+.Validform_error{
+	background-color: #FFCCFF;
+}
+#Validform_msg{
+	color:#000; 
+	font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif;
+	width:280px; 
+	border-radius: 4px;
+	-webkit-box-shadow:2px 2px 3px #aaa;
+	-moz-box-shadow:2px 2px 3px #aaa;
+	background:#fff; position:absolute; top:0px; right:50px; z-index:99999;
+	display:none;filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#999999');}
+#Validform_msg .iframe{position:absolute; left:0px; top:-1px; z-index:-1;}
+#Validform_msg .Validform_title{
+	line-height:32px; height:32px; text-align:left;
+	font-weight:bold; padding:0 8px; color:#fff; 
+	position:relative; background-color:#000;
+}
+#Validform_msg a.Validform_close:link,#Validform_msg a.Validform_close:visited{line-height:32px; position:absolute; right:8px; top:0px; color:#fff; text-decoration:none;}
+#Validform_msg a.Validform_close:hover{color:#cc0;}
+#Validform_msg .Validform_info{padding:8px;border:1px solid #000; border-top:none; text-align:left;}
+.info{
+	margin-left:8px; 
+	border:1px solid #ccc; 
+	padding:8px 20px 8px 10px; 
+	color:#666; 
+	float:left;
+	position:relative;
+	display:none;
+	line-height:26px;
+}
+.dec {
+    top: 9px;
+    display: block;
+    height: 17px;
+    overflow: hidden;
+    position: absolute;
+    left: -8px;
+    width: 8px;
+}
+.dec s {
+    font-family: simsun;
+    font-size: 16px;
+    height: 19px;
+    left: 0;
+    line-height: 21px;
+    position: absolute;
+    text-decoration: none;
+    top: 0;
+    width: 17px;
+}
+.dec .dec1 {
+    color: #ccc;
+}
+.dec .dec2 {
+    color: #fff;
+    left: 1px;
+}
+.lableVal{
+	margin-right: 8px;
+}
+.deleteTag{
+	margin:0px -8px 0px 3px;
+	color: #f5f5f5;
+	font-size: 15px;
+}
+.img-size-1{
+
+	width: 100%;
+	height: 168px;
+}
+.btn-mg-1{
+	margin: 30px 0px 10px 15px;
+}
+.btn-mg-2{
+	margin: 10px 15px 10px 15px;
+}
+.container-fluid {
+	width: 
+  padding: 20px;
+}
+.box{
+	padding: 10px;
+    float: left;
+    width: 200px;
+}
+.box img {
+    max-width: 100%
+ }
+ /*自定义 后台管理列表的 操作栏*/
+.checkbox-all{
+	width: 152px;float: left;
+	min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+}
+.checkbox-opreat{
+	float: left;
+	margin:0px 5px;
+}
+.page{
+	width: auto;
+	float: left;
+	padding: 0px 0px;
+}

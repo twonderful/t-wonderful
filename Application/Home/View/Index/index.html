@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>T-精彩（t-wonderful)-精彩Web分享</title>
+<link rel="shortcut icon" href="__PUBLIC__/images/title-logo.gif"/>
+<meta name="keywords" content="首页" />
+<meta name="description" content="首页 "/>
+<meta name="MSSmartTagsPreventParsing" content="True"/>
+<meta http-equiv="MSThemeCompatible" content="Yes"/>
+ 	<link rel="stylesheet" href="__PUBLIC__/css/home/core.css"/>
+    <!-- <link rel="stylesheet" href="__PUBLIC__/css/home/test.css"/> -->
+ 	<script src="__PUBLIC__/js/jquery.min.js" type="text/javascript"></script>
+ 	<script src="__PUBLIC__/js/home.core.js" type="text/javascript"></script>
+</head>
+<body>
+	<include file="Home@Public/navbar"/>
+	<div class="container">
+		<div class="main">
+			<div class="header">
+				<ul class="submenu">
+					<li><a href=""><i class="icon icon-house"></i> 全 部</a></li>
+					<li><a href="">视 频</a></li>
+					<li><a href="">图 片</a></li>
+					<li><a href="">文 字</a></li>
+					<li><a href="">音 乐</a></li>
+				</ul>
+			</div>
+			<div class="content">
+				<volist id="web" name="list">
+        <div class="box">
+          <div class="web">
+            <div class="web-top">
+                <ul class="webinfo">
+                	<li class="infotime fl">{$web.date}</li>
+                	<li class="infowebsite fr"><a href="{$web.website.link}">{$web.website.name}</a></li>
+                </ul>
+                <a href="{$web.source_link}" target="_blank"><img src="{$web.image_url}"></a>
+            </div>
+             <div class="web-content">
+             <a href="{$web.source_link}" title="{$web.title}" target="_blank">
+                <switch name="web.type" >
+                    <case value="1"><i class="icon-film"></i> </case>
+                    <case value="2"><i class="icon-picture"></i> </case>
+                    <case value="3"><i class="icon-book"></i> </case>
+                    <case value="4"><i class="icon-headphones"></i> </case>
+                    <default />---
+                  </switch> {$web.title}</a>
+              <h3>{$web.introduction}</h3>
+            </div>
+            <div class="web-bottom">
+              <ul class="lb">
+                <?php 
+                     $arrTags=array(); $tagStrs=""; $tagStr=$web["tags"];if($tagStr!=null&&$tagStr!=""){ $arrTags=explode(",", $tagStr); } 
+                     for ($i=0; $i <count($arrTags); $i++) {
+                            $labelType = array("default","primary","info","success","danger","warning");
+                            $typeId=mt_rand(0,5);
+                            echo "<li><span class='label ".$labelType[$typeId]."'>".$arrTags[$i]."</span></li> "; 
+                }?>
+              </ul>
+              <span class="op">{$web.count.click}</span>
+            </div> 
+          </div>
+        </div>
+       </volist>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

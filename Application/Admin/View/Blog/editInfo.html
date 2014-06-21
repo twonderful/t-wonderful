@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="__PUBLIC__/images/title-logo.gif">
+
+    <title>编辑-博客</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="__PUBLIC__/css/font-awesome.min.css">
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="__PUBLIC__/css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <link href="__PUBLIC__/css/square/square.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/package/jquery.tagsinput.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/package/layout.css" rel="stylesheet">
+    <link href="__PUBLIC__/umeditor/themes/default/css/umeditor.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar header.导航栏 -->
+    <include file="Admin@Public/menu" />
+
+   <div class="main-container">
+
+      <div class="projects-header page-header">
+          <h3><i class="icon-plus"></i> 编辑</h3>
+      </div>
+
+      <!-- 添加表单 -->
+      <form id="form-addInfo" class="form-horizontal" role="form" action="__URL__/saveInfo" >
+        <input type="hidden" name="dbid" value="{$blog.dbid}"/>
+        </br>
+        <div class="form-group">
+          <label class="col-sm-0 control-label input-lg">标题</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control input-lg" name="title" placeholder="标题" datatype="*4-32" errormsg="<i class='icon-warning-sign'></i> 标题在4~32位之间"  value="{$blog.title}" nullmsg="<i class='icon-warning-sign'></i> 请填写信息！" />
+          </div>
+          <div class="Validform_checktip">
+             <div class="info">标题至少4个字符,最多32个字符<span class="dec"><s class="dec1">&#9670;</s><s class="dec2">&#9670;</s></span></div>
+          </div>
+        </div>   
+
+        <div class="form-group">
+          <label class="col-sm-0 control-label input-lg">正文</label>
+          <div class="col-sm-8">
+            <!-- 加载编辑器的容器 -->
+           
+            <!-- 实例化编辑器 -->
+            <textarea  id="umeditor" name="content">{$blog.content} </textarea>
+          </div>
+          <div class="Validform_checktip">
+             <div class="info">标题至少4个字符,最多32个字符<span class="dec"><s class="dec1">&#9670;</s><s class="dec2">&#9670;</s></span></div>
+          </div>
+        </div>   
+
+        </br>
+        </br>
+
+         <div class="form-group">
+          <label class="col-sm-0 control-label input-lg" placeholder="分享介绍">描述</label>
+          <div class="col-sm-8">
+            <textarea name="introduction" class="form-control" rows="3" datatype="*4-120" errormsg="<i class='icon-warning-sign'></i> 描述在4~120位之间" nullmsg="<i class='icon-warning-sign'></i> 请填写信息！">{$blog.introduction}</textarea>
+          </div>
+          <div class="Validform_checktip">
+             <div class="info">描述至少4个字符,最多120个字符<span class="dec"><s class="dec1">&#9670;</s><s class="dec2">&#9670;</s></span></div>
+          </div>
+        </div>
+
+        <br>
+        <div class="form-group" id="form-lable">
+          <label for="inputTag3" class="col-sm-0 control-label input-lg">标签</label>
+          <div class="col-sm-8 input-lg">
+              <input  type="text" class="form-control input-lg" name="tags" value="{$blog.tags}" id="tags" datatype="*1-24"  nullmsg="<i class='icon-warning-sign'></i> 请填写信息！"  />
+          </div>
+        </div>
+
+        <br>
+        <div class="form-group" id="form-lable">
+          <label for="inputTag3" class="col-sm-0 control-label input-lg">地址</label>
+          <div class="col-sm-8 input-lg">
+              <input  type="text" class="form-control input-lg" name="request_url" value="{$blog.request_url}" id="tags" datatype="*1-24"  nullmsg="<i class='icon-warning-sign'></i> 请填写信息！"  />
+          </div>
+        </div>
+
+       <br>
+       <div class="form-group">
+          <label for="inputLink3" class="col-sm-0 control-label input-lg">封面</label>
+          <div class="col-sm-3" id="net_img">            
+              <textarea name="image_url" class="form-control" rows="6" id="image_url" datatype="url" errormsg="<i class='icon-warning-sign'></i> 图片链接无效" nullmsg="<i class='icon-warning-sign'></i> 请填写信息！">{$blog.image_url}</textarea>
+          </div>
+           <div class="col-sm-1">            
+               <button type="button" onclick="showUrlImg()" class="btn btn-info btn-lg btn-mg-1"><i class="icon-circle-arrow-right"></i> 预览</button>
+              
+          </div>
+          <div class="col-sm-3">            
+               <img id="image_show" src="{$blog.image_url}" class="img-thumbnail img-size-1"/>
+          </div>
+        </div>
+
+        <br>
+        <div class="form-group">
+          <div class="col-sm-offset-4 col-sm-4">
+            <button type="reset" class="btn btn-default btn-lg"><i class="icon-repeat"></i> 重置</button>
+            &nbsp;&nbsp;&nbsp;   
+            <button id="btn_sub" type="button" class="btn btn-success btn-lg"><i class="icon-circle-arrow-right"></i> 确定</button>
+          </div>
+        </div>
+      </form>
+      
+    </div>    
+    
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/bootstrap.js"></script>
+    <script src="__PUBLIC__/js/package/validform_v5.3.2_min.js"></script>
+    <script src="__PUBLIC__/js/package/jquery.tagsinput.js"></script> 
+    <!-- 配置文件 -->
+    <script src="__PUBLIC__/umeditor/umeditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script src="__PUBLIC__/umeditor/umeditor.min.js"></script>
+    <script type="text/javascript">
+     $('#tags').tagsInput({
+        'height':'52px', //设置高度
+        'width':'100%',  //设置宽度
+      });
+    var um = UM.getEditor('umeditor',{});
+      $(function(){
+        var getInfoObj=function(){
+            return  $(this).parents(".form-group").children(".Validform_checktip").children(".info");
+          }
+        
+        $("[datatype]").focusin(function(){
+          if(this.timeout){clearTimeout(this.timeout);}
+          var infoObj=getInfoObj.call(this);
+          if(infoObj.siblings(".Validform_right").length!=0){
+            return; 
+          }
+          infoObj.show().siblings().hide();
+          
+        }).focusout(function(){
+          var infoObj=getInfoObj.call(this);
+          this.timeout=setTimeout(function(){
+            infoObj.hide().siblings(".Validform_wrong,.Validform_loading").show();
+          },0);
+          
+        });
+
+        var demo = $("#form-addInfo").Validform({
+          btnSubmit:"#btn_sub",
+          tiptype:2,
+          postonce:true,
+          ajaxPost:true,
+          callback:function(data){ 
+              if(data.status==1){
+                $('.Validform_info').html(data.message);
+                setTimeout(function(){
+                  if(data.url!=null&&data.url!=""){
+                    window.location.href=data.url;
+                  }else{
+                    window.history.back();
+                  } 
+                },1000);
+              }else{
+                $('.Validform_info').html(data.message);
+                setTimeout(function(){
+                  window.location.reload();
+                },1000);
+              }
+          }
+        }); 
+      })
+    </script>
+  </body>
+</html>

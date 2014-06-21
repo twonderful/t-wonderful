@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="__PUBLIC__/images/title-logo.gif">
+
+    <title>首页</title>
+    <include file="Home@Public/head"/>
+    <script src="__PUBLIC__/js/home/home.index.js"></script>
+    <script type="text/javascript">
+      /*$(function() {
+          $.vegas({src:'<?php echo '__PUBLIC__' ?>/images/bj/origin-2.jpg',fade:900,align:'center',valign:'center',});
+      });*/
+    </script>
+  </head>
+
+  <body class="cm-index">
+
+    <!-- Fixed navbar -->
+    <include file="Home@Public/menu"/>
+
+    <div class="main-container">
+      <div class="main-alert" id="alert">
+          <h3>非缔造  纯分享 <small>- - - 我们不是精彩的缔造者，我们只是精彩的分享者。</small> </h3>
+          
+      </div> 
+    </div>    
+    <div id="masonry" class="main-container">
+      <!-- <volist id="web" name="list">
+        <div class="box">
+          <div class="web">
+            <div class="web-top">
+                <dl class="fd"><dd>{$web.date}</dd><dt><a href="{$web.website.link}">{$web.website.name}</a></dt></dl>
+                <a href="{$web.source_link}" target="_blank"><img src="{$web.image_url}"></a>
+            </div>
+            <div class="web-content">
+              <a href="{$web.source_link}" title="{$web.title}" target="_blank">
+                <switch name="web.type" >
+                    <case value="1"><i class="icon-film"></i> </case>
+                    <case value="2"><i class="icon-picture"></i> </case>
+                    <case value="3"><i class="icon-book"></i> </case>
+                    <case value="4"><i class="icon-headphones"></i> </case>
+                    <default />---
+                  </switch> {$web.title}</a>
+              <h4>{$web.introduction}</h4>
+            </div>
+            <div class="web-bottom">
+              <ul class="lb">
+                <?php 
+                     $arrTags=array(); $tagStrs=""; $tagStr=$web["tags"];if($tagStr!=null&&$tagStr!=""){ $arrTags=explode(",", $tagStr); } 
+                     for ($i=0; $i <count($arrTags); $i++) {
+                            $labelType = array("default","primary","info","success","danger","warning");
+                            $typeId=mt_rand(0,5);
+                            echo "<li><span class='label label-".$labelType[$typeId]."'>".$arrTags[$i]."</span></li> "; 
+                }?>
+              </ul>
+              <span class="op">{$web.count.click}</span>
+            </div>
+          </div>
+        </div>
+       </volist>  -->
+       <?php 
+          $list= array('list1','list2','list3','list4','list5','list6','list7','list8','list10','list10');
+          $j = 1;
+          for ($i=0; $i <count($list) ; $i++) { 
+              
+              
+              echo "show ".$list[$i]." num ".$j;
+              $j==4? $j=0:++$j;
+          }
+       ?>
+
+    </div>
+    <div class="main-container" id="loading">
+        加载更多。。
+    </div>    
+    <a id="scrollUp" href="#top" title="" style="position: fixed; z-index: 2147483647; display: none;"> </a>
+  </body>
+</html>

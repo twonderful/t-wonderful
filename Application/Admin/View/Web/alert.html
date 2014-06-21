@@ -1,0 +1,42 @@
+
+<div class="alert alert-info">
+  <label>状态：</label>
+   <if condition="$status==''||$status==null||$status==3">  <a href="__URL__/listall/status/3/type/0" class="btn btn-info">
+        <else /> <a href="__URL__/listall/status/3/type/0" class="btn btn-link">
+   </if>
+        全部 </a>
+   <if condition="$status==0&&$status!=''&&$status!=null"><a href="__URL__/listall/status/0/type/0 " class="btn btn-info">
+        <else /> <a href="__URL__/listall/status/0/type/0" class="btn btn-link">
+   </if>
+      <i class="icon-spinner"></i> 审核 </a>
+    <if condition="$status==1 ">  <a href="__URL__/listall/status/1/type/0" class="btn btn-info">
+        <else /> <a href="__URL__/listall/status/1/type/0" class="btn btn-link">
+   </if>
+      <i class="icon-unlock"></i> Enable </a>
+    <if condition="$status==2 ">  <a href="__URL__/listall/status/2/type/0" class="btn btn-info">
+        <else /> <a href="__URL__/listall/status/2/type/0" class="btn btn-link">
+   </if>
+      <i class="icon-lock"></i> Disable</a>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label>类型：</label>
+   <if condition="$paramType==0 ">  <a href="__URL__/listall/status/<?php echo $status;?>/type/0" class="btn btn-info">
+        <else /> <a href="__URL__/listall/status/<?php echo $status;?>/type/0" class="btn btn-link">
+   </if>
+        全部 ({$typeCount.allCount})</a>
+   <if condition="$paramType==1 ">  <a href="__URL__/listall/status/<?php echo $status;?>/type/1" class="btn btn-info">
+        <else /> <a href="__URL__/listall/status/<?php echo $status;?>/type/1" class="btn btn-link">
+   </if>
+      <i class="icon-film"></i> 视频 ({$typeCount.videoCount}) </a>
+    <if condition="$paramType==2 ">  <a href="__URL__/listall/status/<?php echo $status;?>type/2" class="btn btn-info">
+        <else /> <a href="__URL__/listall/status/<?php echo $status;?>/type/2" class="btn btn-link">
+   </if>
+      <i class="icon-picture"></i> 图片 ({$typeCount.imageCount})</a>
+    <if condition="$paramType==3 ">  <a href="__URL__/listall/status/<?php echo $status;?>/type/2" class="btn btn-info">
+        <else /> <a href="__URL__/listall/status/<?php echo $status;?>/type/2" class="btn btn-link">
+   </if>
+      <i class="icon-book"></i> 文字 ({$typeCount.wordsCount})</a>
+    <if condition="$paramType==4 ">  <a href="__URL__/listall/status/<?php echo $status;?>/type/4" class="btn btn-info">
+        <else /> <a href="__URL__/listall/status/<?php echo $status;?>/type/4" class="btn btn-link">
+   </if>
+      <i class="icon-headphones"></i> 音乐 ({$typeCount.musicCount})</a>
+</div>

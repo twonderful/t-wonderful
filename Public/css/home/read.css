@@ -1,0 +1,26 @@
+
+
+.title{
+	width: 97.666%;height: 80px;
+	color: #006666;font-size: 24px;
+	padding-left: 1%;padding-right: 1%;
+	border-bottom: 2px solid #dddddd;
+}
+.title h2{
+	font-size: 26px;line-height: 50px;
+}
+.title h3{
+	font-size: 14px;line-height: 30px;
+	color: #01B1ED;font-weight: normal;
+}
+.title span{
+	padding-right: 6px;
+}
+.content-body{
+	width: 97.666%;line-height: 24px;
+	color: #006666;font-size: 14px;
+	padding-top: 30px;padding-bottom: 30px;
+	padding-left: 1%;padding-right: 1%;
+	border-bottom: 1px solid #dddddd;
+}
+

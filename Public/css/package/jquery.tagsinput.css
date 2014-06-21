@@ -1,0 +1,26 @@
+div.tagsinput { background-color: #FFFFFF;
+    background-image: none;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555555;
+    display: block;line-height: 1.33;
+    padding: 8px 12px;
+    font-size: 14px;
+    overflow-y: auto;
+}
+div.tagsinput span.tag { 
+	border: 1px solid #5BC0DE;
+	border-radius: 4px;
+	-moz-border-radius:4px; 
+	-webkit-border-radius:4px;
+	display: block; float: left;
+	padding: 5px; text-decoration:none; background: #5BC0DE; color: #FFFFFF;
+	margin-right: 5px;font-family: inherit;  font-size:14px;}
+div.tagsinput span.tag a { 
+	font-weight: bold;
+	 color: #FFFFFF; text-decoration:none; font-size: 13px; margin: -4px 0px 0px 0px; } 
+div.tagsinput input { width:120px; margin:0px; font-family: inherit; font-size: 13px; border:1px solid transparent; padding:5px; background: transparent; color: #000; outline:0px;  margin-right:5px; margin-bottom:5px; }
+div.tagsinput div { display:block; float: left; } 
+.tags_clear { clear: both; width: 100%; height: 0px; }
+.not_valid {background: #FBD8DB !important; color: #90111A !important;}

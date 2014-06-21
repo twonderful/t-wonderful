@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="__PUBLIC__/images/title-logo.gif">
+
+    <title>首页</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="__PUBLIC__/css/font-awesome.min.css">
+   
+    <link href="__PUBLIC__/css/package/layout.css" rel="stylesheet"> 
+    <link href="__PUBLIC__/css/home/style.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/package/jquery.vegas.css" rel="stylesheet">
+    <link href="navbar-fixed-top.css" rel="stylesheet">
+     <!--[if IE 7]>
+    <link rel="stylesheet" href="__PUBLIC__/css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+     <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/bootstrap.js"></script>
+    <script src="__PUBLIC__/js/package/home.all.js"></script>
+    <script src="__PUBLIC__/js/package/jquery.scrollUp.min.js"></script>
+    <script src="__PUBLIC__/js/plug-flow/imagesloaded.pkgd.min.js"></script>
+    <script src="__PUBLIC__/js/plug-flow/masonry.pkgd.min.js"></script>
+    <script src="__PUBLIC__/js/package/jquery.vegas.js"></script>
+    <script type="text/javascript">
+          $(function() {
+              $.vegas({
+                src:'<?php echo '__PUBLIC__' ?>/images/bj/origin-2.jpg',
+                fade:1000,
+                align:       'center',
+                valign:      'center',
+              });
+             
+            });
+    </script>
+  </head>
+
+  <body class="cm-index">
+
+    <!-- Fixed navbar -->
+    <include file="Home@Public/menu"/>
+
+   <div class="main-container">
+      <div class="main-alert" id="alert">
+          <h3>非缔造  纯分享 <small>- - - 我们不是精彩的缔造者，我们只是精彩的分享者。</small> </h3>
+          
+      </div> 
+    </div>    
+    <div id="masonry" class="main-container">
+      <volist id="web" name="list">
+        <div class="box">
+          <div class="web">
+            <div class="web-top">
+                <dl class="fd"><dd>{$web.date}</dd><dt><a href="{$web.website.link}">{$web.website.name}</a></dt></dl>
+                <a href="{$web.source_link}" target="_blank"><img src="{$web.image_url}"></a>
+            </div>
+            <div class="web-content">
+              <a href="{$web.source_link}" title="{$web.title}" target="_blank">
+                <switch name="web.type" >
+                    <case value="1"><i class="icon-film"></i> </case>
+                    <case value="2"><i class="icon-picture"></i> </case>
+                    <case value="3"><i class="icon-book"></i> </case>
+                    <case value="4"><i class="icon-headphones"></i> </case>
+                    <default />---
+                  </switch> {$web.title}</a>
+              <h4>{$web.introduction}</h4>
+            </div>
+            <div class="web-bottom">
+              <ul class="lb">
+                <?php 
+                     $arrTags=array(); $tagStrs=""; $tagStr=$web["tags"];if($tagStr!=null&&$tagStr!=""){ $arrTags=explode(",", $tagStr); } 
+                     for ($i=0; $i <count($arrTags); $i++) {
+                            $labelType = array("default","primary","info","success","danger","warning");
+                            $typeId=mt_rand(0,5);
+                            echo "<li><span class='label label-".$labelType[$typeId]."'>".$arrTags[$i]."</span></li> "; 
+                }?>
+              </ul>
+              <span class="op">{$web.count.click}</span>
+            </div>
+          </div>
+        </div>
+       </volist> 
+    </div>
+   
+    
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+   
+    <a id="scrollUp" href="#top" title="" style="position: fixed; z-index: 2147483647; display: none;"> </a>
+    <script>
+    $(function() {
+        var $container = $('#masonry');
+        $container.imagesLoaded(function() {
+            $container.masonry({
+                    itemSelector:'.box',
+                    gutterWidth: 0,
+                    gutter:0,
+                    isAnimated: true,
+                });
+            });
+          $('.box').hover(function(){
+                  $(this).find('dl.fd').fadeIn(800);
+              },function(){
+                  $(this).find('dl.fd').fadeOut();
+              });
+        });
+    </script>
+  </body>
+</html>

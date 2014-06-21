@@ -1,0 +1,288 @@
+[ 2014-06-12T23:04:18+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `tag` [ RunTime:0.036002s ]
+SQL: SELECT * FROM `tag` WHERE ( status=1 )  [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `web` [ RunTime:0.018001s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `web` WHERE ( status=1 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `web` WHERE ( status=1 ) ORDER BY date DESC  LIMIT 0,10   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `count_web` [ RunTime:0.023002s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='18' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `website` [ RunTime:0.016001s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='15' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='14' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='3' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='16' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='13' ) LIMIT 1   [ RunTime:0.001001s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='5' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='12' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='3' ) LIMIT 1   [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.034002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2014-06-12T23:04:20+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `tag` [ RunTime:0.007000s ]
+SQL: SELECT * FROM `tag` WHERE ( status=1 )  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `web` [ RunTime:0.008000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `web` WHERE ( status=1 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `web` WHERE ( status=1 ) ORDER BY date DESC  LIMIT 0,10   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `count_web` [ RunTime:0.007000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='18' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `website` [ RunTime:0.006001s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='15' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='14' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='3' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='16' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='13' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='5' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='12' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='3' ) LIMIT 1   [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.032002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2014-06-12T23:05:10+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: SHOW COLUMNS FROM `tag` [ RunTime:0.008001s ]
+SQL: SELECT * FROM `tag` WHERE ( status=1 )  [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `web` [ RunTime:0.012001s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `web` WHERE ( status=1 ) LIMIT 1   [ RunTime:0.004000s ]
+SQL: SELECT * FROM `web` WHERE ( status=1 ) ORDER BY date DESC  LIMIT 0,10   [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `count_web` [ RunTime:0.008000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='18' ) LIMIT 1   [ RunTime:0.003001s ]
+SQL: SHOW COLUMNS FROM `website` [ RunTime:0.008000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='15' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='14' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='3' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='16' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='13' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='5' ) LIMIT 1   [ RunTime:0.003000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='12' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='3' ) LIMIT 1   [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.083005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.084005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2014-06-12T23:05:34+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `tag` [ RunTime:0.006000s ]
+SQL: SELECT * FROM `tag` WHERE ( status=1 )  [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `web` [ RunTime:0.007001s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `web` WHERE ( status=1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `web` WHERE ( status=1 ) ORDER BY date DESC  LIMIT 0,10   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `count_web` [ RunTime:0.006001s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='18' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `website` [ RunTime:0.006000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='15' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='14' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='3' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='16' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='13' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='5' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='12' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='3' ) LIMIT 1   [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.032002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2014-06-12T23:06:10+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `tag` [ RunTime:0.007001s ]
+SQL: SELECT * FROM `tag` WHERE ( status=1 )  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `web` [ RunTime:0.006000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `web` WHERE ( status=1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `web` WHERE ( status=1 ) ORDER BY date DESC  LIMIT 0,10   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `count_web` [ RunTime:0.007000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='18' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `website` [ RunTime:0.007000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='15' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='14' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='3' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='16' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.001001s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='13' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='5' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='12' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='3' ) LIMIT 1   [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.036002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.036002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2014-06-12T23:06:11+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `tag` [ RunTime:0.008000s ]
+SQL: SELECT * FROM `tag` WHERE ( status=1 )  [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `web` [ RunTime:0.009000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `web` WHERE ( status=1 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `web` WHERE ( status=1 ) ORDER BY date DESC  LIMIT 0,10   [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `count_web` [ RunTime:0.008001s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='18' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `website` [ RunTime:0.019001s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.004000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='15' ) LIMIT 1   [ RunTime:0.001001s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.004000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='14' ) LIMIT 1   [ RunTime:0.007000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='3' ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='16' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='13' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='5' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='12' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='3' ) LIMIT 1   [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.039002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.039002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.060003s ]
+INFO: [ app_end ] --END-- [ RunTime:0.061003s ]
+
+[ 2014-06-12T23:06:30+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `tag` [ RunTime:0.008000s ]
+SQL: SELECT * FROM `tag` WHERE ( status=1 )  [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `web` [ RunTime:0.010000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `web` WHERE ( status=1 ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SELECT * FROM `web` WHERE ( status=1 ) ORDER BY date DESC  LIMIT 0,10   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `count_web` [ RunTime:0.007000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='18' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `website` [ RunTime:0.006000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='15' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='14' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='3' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='16' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='13' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='5' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='12' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='3' ) LIMIT 1   [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.040003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.041003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2014-06-12T23:07:12+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `tag` [ RunTime:0.006000s ]
+SQL: SELECT * FROM `tag` WHERE ( status=1 )  [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `web` [ RunTime:0.006001s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `web` WHERE ( status=1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `web` WHERE ( status=1 ) ORDER BY date DESC  LIMIT 0,10   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `count_web` [ RunTime:0.006001s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='18' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `website` [ RunTime:0.008000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='15' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='14' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='3' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='16' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='6' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='13' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='5' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `count_web` WHERE ( 1=1 AND web_id='12' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `website` WHERE ( 1=1 AND dbid='3' ) LIMIT 1   [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.035002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+

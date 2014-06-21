@@ -1,0 +1,8 @@
+<a class="btn btn-default" href="__URL__/editinfo?_id={$vo.dbid}"><i class="icon-edit"></i></a>
+    <if condition="$vo.status neq 1">
+    <a class="btn btn-success" href="javascript:checkDialog('__URL__/changeStatus?dbid={$vo.dbid}&status=1','确定设置为 Enable？')"><i class="icon-unlock"></i></a>
+    </if>
+    <if condition="$vo.status neq 2">
+    <a class="btn btn-warning" href="javascript:checkDialog('__URL__/changeStatus?dbid={$vo.dbid}&status=2','确定设置为 Disable？')"><i class="icon-lock"></i></a>
+    </if>
+    <a class="btn btn-danger" href="javascript:checkDialog('__URL__/changeStatus?dbid={$vo.dbid}&status=2','确定选择删除？')"><i class="icon-trash"></i></a>

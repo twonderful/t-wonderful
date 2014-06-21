@@ -1,0 +1,20 @@
+	<div class="navbar">
+		<h1 class="logo"><img src="__PUBLIC__/images/logo.png" title="" alt="logo"/></h1>
+    <a href="" class="mindex active"><i class="icon icon-house"></i> 主 页</a>
+		<a  class="search" href="javascript:toggleSearch();">快速定位？</a>
+		<ul class="menu">
+			<li><a href="">站 点</a></li>
+			<li><a href="__ROOT__/Blog/index.html">博 客</a></li>
+		</ul>
+	</div>
+	<div class="search-model">
+			 <div class="search-body">
+              <volist id="tag" name="Tags">
+               <a href="" class="btn btn-warning btn-mgr-1">{$tag.tag}</a>
+              </volist> 
+
+       </div>
+       <div class="search-footer">
+          <a href="javascript:toggleSearch();" class="btn-colose"><--- 关 闭</a>
+       </div>
+	</div>

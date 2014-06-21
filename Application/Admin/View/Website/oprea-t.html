@@ -1,0 +1,23 @@
+<div class="form-group">
+  <div class="checkbox-all">
+    <div class="input-group ">
+      <span class="input-group-addon">
+        <input type="checkbox" name="checkbox_all" value="0">
+      </span>
+      <span class="form-control">选择全部</span>
+    </div>
+  </div>
+  <if condition="$status==0||$status==2">
+      <a class="btn btn-default checkbox-opreat disabled" href="javascript:checkChanges('__URL__/checkChanges?status=1','确定批量设置为 Enable？')">
+    <i class="icon-unlock"></i> Enable</a>
+    <else /> 
+  </if>
+  <if condition="$status==0||$status==1">
+      <a class="btn btn-default checkbox-opreat disabled" href="javascript:checkDialogs('__URL__/checkDeletes?status=2','确定批量设置为 Disable？')">
+    <i class="icon-lock"></i> Disable</a>
+    <else /> 
+  </if>
+      <a class="btn btn-default checkbox-opreat disabled" href="javascript:checkDialogs('__URL__/checkDeletes','确定删除所选择数据？')">
+    <i class="icon-trash"></i> Delete</a>
+    {$page} 
+</div>
