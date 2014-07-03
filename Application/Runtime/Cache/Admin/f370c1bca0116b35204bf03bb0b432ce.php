@@ -46,7 +46,7 @@
 
             <div class="navbar-collapse collapse">
               <!-- 获取当前的模块操作 -->
-              <?php  $controller=explode('/','/Admin/User/listall/status/0/type/0')[2];?>
+        
 
               <ul class="nav navbar-nav">
                 <?php if($controller=='Index'||$controller=='index'): ?><li class="active">
@@ -61,6 +61,8 @@
                     <li><a href="/Admin/Web/listall/status/0/type/0"><i class="icon-spinner"></i>&nbsp;&nbsp; 审核</a></li>
                     <li><a href="/Admin/Web/listall/status/1/type/0"><i class="icon-unlock"></i>&nbsp;&nbsp;Enalbe</a></li>
                     <li><a href="/Admin/Web/listall/status/2/type/0"><i class="icon-lock"></i>&nbsp;&nbsp; Disable</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/Admin/Web/listtype/status/0"><i class="icon-folder-close-alt"></i> 所属分类</a></li>
                   </ul>
                 </li>
                 <?php if($controller=='Tag' ): ?><li class="active dropdown">
@@ -94,6 +96,8 @@
                     <li><a href="/Admin/Blog/listall/status/0"><i class="icon-spinner"></i>&nbsp;&nbsp; 审核</a></li>
                     <li><a href="/Admin/Blog/listall/status/1"><i class="icon-unlock"></i>&nbsp;&nbsp;Enalbe</a></li>
                     <li><a href="/Admin/Blog/listall/status/2"><i class="icon-lock"></i>&nbsp;&nbsp; Disable</a></li>
+                     <li class="divider"></li>
+                    <li><a href="/Admin/Blog/listtype/status/0"><i class="icon-folder-close-alt"></i> 所属分类</a></li>
                   </ul>
                 </li>
                <?php if($controller=='User' ): ?><li class="active dropdown">

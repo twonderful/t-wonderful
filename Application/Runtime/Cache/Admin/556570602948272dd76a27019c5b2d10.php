@@ -50,7 +50,7 @@
 
             <div class="navbar-collapse collapse">
               <!-- 获取当前的模块操作 -->
-              <?php  $controller=explode('/','/Admin/Blog/addinfo')[2];?>
+        
 
               <ul class="nav navbar-nav">
                 <?php if($controller=='Index'||$controller=='index'): ?><li class="active">
@@ -63,8 +63,10 @@
                     <li><a href="/Admin/Web/addinfo"><i class="icon-plus"></i>&nbsp;&nbsp; 添加</a></li>
                     <li class="divider"></li>
                     <li><a href="/Admin/Web/listall/status/0/type/0"><i class="icon-spinner"></i>&nbsp;&nbsp; 审核</a></li>
-                    <li><a href="/Admin/Web/listall/status/1/type/0"><i class="icon-unlock"></i>&nbsp;&nbsp;Enalbe</a></li>
+                    <li><a href="/Admin/Web/listall/status/1/type/0"><i class="icon-unlock"></i>&nbsp;&nbsp; Enalbe</a></li>
                     <li><a href="/Admin/Web/listall/status/2/type/0"><i class="icon-lock"></i>&nbsp;&nbsp; Disable</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/Admin/Web/listtype/status/0"><i class="icon-folder-close-alt"></i>&nbsp;&nbsp; 所属分类</a></li>
                   </ul>
                 </li>
                 <?php if($controller=='Tag' ): ?><li class="active dropdown">
@@ -99,7 +101,7 @@
                     <li><a href="/Admin/Blog/listall/status/1"><i class="icon-unlock"></i>&nbsp;&nbsp;Enalbe</a></li>
                     <li><a href="/Admin/Blog/listall/status/2"><i class="icon-lock"></i>&nbsp;&nbsp; Disable</a></li>
                      <li class="divider"></li>
-                    <li><a href="/Admin/Blog/listall/status/2"><i class="icon-folder-close-alt"></i> 所属分类</a></li>
+                    <li><a href="/Admin/Blog/listtype/status/0"><i class="icon-folder-close-alt"></i>&nbsp;&nbsp; 所属分类</a></li>
                   </ul>
                 </li>
                <?php if($controller=='User' ): ?><li class="active dropdown">
@@ -149,23 +151,8 @@
           </div>
         </div>   
 
-        <div class="form-group">
-          <label class="col-sm-0 control-label input-lg">正文</label>
-          <div class="col-sm-8">
-            <!-- 加载编辑器的容器 -->
-            <script id="umeditor" name="content" type="text/plain">
-            </script>
-            <!-- 实例化编辑器 -->
-          
-          </div>
-          <div class="Validform_checktip">
-             <div class="info">标题至少4个字符,最多32个字符<span class="dec"><s class="dec1">&#9670;</s><s class="dec2">&#9670;</s></span></div>
-          </div>
-        </div>   
-
-        </br>
-        </br>
-
+       
+        <br>
          <div class="form-group">
           <label class="col-sm-0 control-label input-lg" placeholder="分享介绍">描述</label>
           <div class="col-sm-8">
@@ -218,6 +205,17 @@
         </div>
 
         <br>
+         <div class="form-group">
+          <label class="col-sm-0 control-label input-lg">正文</label>
+          <div class="col-sm-8">
+            <script id="umeditor" name="content" type="text/plain">
+            </script>
+          </div>
+         
+        </div>  
+
+        <br>
+        <br>
         <div class="form-group">
           <div class="col-sm-offset-4 col-sm-4">
             <button type="reset" class="btn btn-default btn-lg"><i class="icon-repeat"></i> 重置</button>
@@ -231,64 +229,24 @@
     
 
     <a id="scrollUp" href="#top" title="" style="position: fixed; z-index: 2147483647; display: none;"> </a>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+  
     <script src="/Public/js/jquery.min.js"></script>
     <script src="/Public/js/bootstrap.js"></script>
+    <script src="/Public/js/package/jquery.scrollUp.min.js"></script>
+    <script src="/Public/js/package/admin.all.js"></script>
+    <script src="/Public/js/package/web.all.js"></script>
+    <script src="/Public/js/package/icheck.js"></script> 
     <script src="/Public/js/package/validform_v5.3.2_min.js"></script>
     <script src="/Public/js/package/jquery.tagsinput.js"></script>  
-    <!-- 配置文件 -->
     <script src="/Public/umeditor/umeditor.config.js"></script>
-    <!-- 编辑器源码文件 -->
     <script src="/Public/umeditor/umeditor.min.js"></script> 
     <script type="text/javascript">
     $('#tags').tagsInput({
         'height':'52px', //设置高度
         'width':'100%',  //设置宽度
       });
-    var um = UM.getEditor('umeditor',{});
-      $(function(){
-        var getInfoObj=function(){
-            return  $(this).parents(".form-group").children(".Validform_checktip").children(".info");
-          }
-        
-        $("[datatype]").focusin(function(){
-          if(this.timeout){clearTimeout(this.timeout);}
-          var infoObj=getInfoObj.call(this);
-          if(infoObj.siblings(".Validform_right").length!=0){
-            return; 
-          }
-          infoObj.show().siblings().hide();
-          
-        }).focusout(function(){
-          var infoObj=getInfoObj.call(this);
-          this.timeout=setTimeout(function(){
-            infoObj.hide().siblings(".Validform_wrong,.Validform_loading").show();
-          },0);
-          
-        });
-
-        var demo = $("#form-addInfo").Validform({
-          btnSubmit:"#btn_sub",
-          tiptype:2,
-          postonce:true,
-          ajaxPost:true,
-          callback:function(data){ 
-              if(data.status==1){
-                $('.Validform_info').html(data.message);
-                setTimeout(function(){
-                  window.location.href=data.url;
-                },1000);
-              }else{
-                $('.Validform_info').html(data.message);
-                setTimeout(function(){
-                  window.location.reload();
-                },2000);
-              }
-          }
-        }); 
-      })
+     var um = UM.getEditor('umeditor',{});
+      
     </script>
   </body>
 </html>

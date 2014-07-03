@@ -29,7 +29,13 @@ $(function(){
                 $('.Validform_info').html(data.message);
                 setTimeout(function(){
                   if(data.url!=null&&data.url!=""){
-                    window.location.href=data.url;
+                    var link=""
+                    if(data.dbid!=null&&data.dbid>0){
+                       link=data.url+"?dbid="+data.dbid;
+                    }else{
+                        link=data.url;
+                    }
+                    window.location.href=link;
                   }else{
                     window.history.back();
                   } 

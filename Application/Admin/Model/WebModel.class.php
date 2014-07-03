@@ -18,8 +18,8 @@ class WebModel extends RelationModel {
               ),
             'Content'=>array(
               'mapping_type'    =>self::HAS_ONE,
-                'class_name'    =>'blog_content',
-                'foreign_key'=>'blog_id',
+                'class_name'    =>'web_content',
+                'foreign_key'=>'web_id',
                 'mapping_name' =>'content',
               ),
         /*发布者 关联*/   

@@ -5,16 +5,14 @@
         <else /> <a href="__URL__/listall/status/3" class="btn btn-link">
    </if>
         全部 ({$statusCount.allCount})</a>
+
+
    <if condition="$status==0&&$status!=''&&$status!=null"><a href="__URL__/listall/status/0 " class="btn btn-info">
         <else /> <a href="__URL__/listall/status/0" class="btn btn-link">
    </if>
-      <i class="icon-spinner"></i> 审核  ({$statusCount.auditCount})</a>
+      <i class="icon-spinner"></i> 网页 ({$statusCount.auditCount})</a>
     <if condition="$status==1 ">  <a href="__URL__/listall/status/1" class="btn btn-info">
         <else /> <a href="__URL__/listall/status/1" class="btn btn-link">
    </if>
-      <i class="icon-unlock"></i> Enable  ({$statusCount.enableCount})</a>
-    <if condition="$status==2 ">  <a href="__URL__/listall/status/2" class="btn btn-info">
-        <else /> <a href="__URL__/listall/status/2" class="btn btn-link">
-   </if>
-      <i class="icon-lock"></i> Disable  ({$statusCount.disableCount})</a>
+      <i class="icon-unlock"></i> 博客  ({$statusCount.enableCount})</a>
 </div>

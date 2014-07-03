@@ -6,6 +6,7 @@ class IndexController extends Controller {
 	
     public function index(){
         if(isset($_SESSION['admin'])){
+            $this->assign('controller','Index');
             $this->display();
         }else{
             $this->redirect('Index/login');

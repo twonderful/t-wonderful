@@ -6,10 +6,33 @@ class TagController extends Controller {
     public function _initialize(){
         if(!isset($_SESSION['admin'])){
             $this->redirect('Index/login');
+        }else{
+            $this->assign('controller','Tag');
         }
     }
-    public function addInfo(){
-
+    public function addInfo($status){
+        if($status>0){
+            switch ($status) {
+                case '1':
+                $Web_type = M('Web_type');
+                $types=$Web_type->order("dbid DESC")->select();
+                $this->assign('isType',"网页");
+                break;
+                case "2":
+                $Blog_type = M('Blog_type');
+                $types=$Blog_type->order("dbid DESC")->select();
+                $this->assign('isType',"博客");
+                default:
+                $Web_type = M('Web_type');
+                $types=$Web_type->order("dbid DESC")->select();
+                break;
+            }
+            
+        }else{
+            $Web_type = M('Web_type');
+            $types=$Web_type->order("dbid DESC")->select();
+        }
+        $this->assign('types',$types);
 		$this->display();
     }
 
@@ -63,8 +86,10 @@ class TagController extends Controller {
         $json_str = json_encode($arr);
         echo $json_str;
     }
-    /* 列表 所有 正常显示*/
-    public function listAll($status){
+  
+   
+    public function listAll(){
+        $status = I('get.status','','htmlspecialchars');
         $Tag = M('Tag');
         $status=($status!=null&&$status!="") ? $status : 3;
         $condition = array();
@@ -79,7 +104,7 @@ class TagController extends Controller {
         $show = $Page->show();
         $this->assign('page',$show);
         $this->assign('status',$status);
-        /*  不同类型统计*/
+
         $allCount = $Tag->where()->count();
         $auditCount = $Tag->where('status=0')->count();
         $enableCount = $Tag->where('status=1')->count();
@@ -87,7 +112,7 @@ class TagController extends Controller {
 
         $statusCount = array('allCount' => $allCount,'auditCount' => $auditCount,'enableCount'=> $enableCount,'disableCount'=> $disableCount);
         $this->assign('statusCount',$statusCount);
-        $this->display(); // 输出模板
+        $this->display();
     }
         /* 批量删除 ids*/
     public function checkDeletes($dbids){

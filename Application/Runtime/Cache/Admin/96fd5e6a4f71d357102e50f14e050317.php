@@ -49,7 +49,7 @@
 
             <div class="navbar-collapse collapse">
               <!-- 获取当前的模块操作 -->
-              <?php  $controller=explode('/','/Admin/Tag/listall/status/3')[2];?>
+        
 
               <ul class="nav navbar-nav">
                 <?php if($controller=='Index'||$controller=='index'): ?><li class="active">
@@ -62,19 +62,28 @@
                     <li><a href="/Admin/Web/addinfo"><i class="icon-plus"></i>&nbsp;&nbsp; 添加</a></li>
                     <li class="divider"></li>
                     <li><a href="/Admin/Web/listall/status/0/type/0"><i class="icon-spinner"></i>&nbsp;&nbsp; 审核</a></li>
-                    <li><a href="/Admin/Web/listall/status/1/type/0"><i class="icon-unlock"></i>&nbsp;&nbsp;Enalbe</a></li>
+                    <li><a href="/Admin/Web/listall/status/1/type/0"><i class="icon-unlock"></i>&nbsp;&nbsp; Enalbe</a></li>
                     <li><a href="/Admin/Web/listall/status/2/type/0"><i class="icon-lock"></i>&nbsp;&nbsp; Disable</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/Admin/Web/listtype/status/0"><i class="icon-folder-close-alt"></i>&nbsp;&nbsp; 所属分类</a></li>
+                  </ul>
+                </li>
+                <?php if($controller=='Type' ): ?><li class="active dropdown">
+                  <?php else: ?> <li class="dropdown"><?php endif; ?> 
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 分类 <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                   <li><a href="/Admin/Type/addinfo"><i class="icon-plus"></i>&nbsp;&nbsp; 添加</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/Admin/Type/listall"><i class="icon-list"></i>&nbsp;&nbsp; 列表</a></li>
                   </ul>
                 </li>
                 <?php if($controller=='Tag' ): ?><li class="active dropdown">
                   <?php else: ?> <li class="dropdown"><?php endif; ?> 
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 标签 <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="/Admin/Tag/addinfo"><i class="icon-plus"></i>&nbsp;&nbsp; 添加</a></li>
+                    <li><a href="/Admin/Tag/listweb"><i class="icon-plus"></i>&nbsp;&nbsp; 添加</a></li>
                     <li class="divider"></li>
-                    <li><a href="/Admin/Tag/listall/status/0"><i class="icon-spinner"></i>&nbsp;&nbsp; 审核</a></li>
-                    <li><a href="/Admin/Tag/listall/status/1"><i class="icon-unlock"></i>&nbsp;&nbsp;Enalbe</a></li>
-                    <li><a href="/Admin/Tag/listall/status/2"><i class="icon-lock"></i>&nbsp;&nbsp; Disable</a></li>
+                    <li><a href="/Admin/Tag/listall"><i class="icon-list"></i>&nbsp;&nbsp; 列表</a></li>
                   </ul>
                 </li>
                  <?php if($controller=='Website' ): ?><li class="active dropdown">
@@ -97,6 +106,8 @@
                     <li><a href="/Admin/Blog/listall/status/0"><i class="icon-spinner"></i>&nbsp;&nbsp; 审核</a></li>
                     <li><a href="/Admin/Blog/listall/status/1"><i class="icon-unlock"></i>&nbsp;&nbsp;Enalbe</a></li>
                     <li><a href="/Admin/Blog/listall/status/2"><i class="icon-lock"></i>&nbsp;&nbsp; Disable</a></li>
+                     <li class="divider"></li>
+                    <li><a href="/Admin/Blog/listtype/status/0"><i class="icon-folder-close-alt"></i>&nbsp;&nbsp; 所属分类</a></li>
                   </ul>
                 </li>
                <?php if($controller=='User' ): ?><li class="active dropdown">
@@ -141,15 +152,14 @@
    <?php if($status==''||$status==null||$status==3): ?><a href="/Admin/Tag/listall/status/3" class="btn btn-info">
         <?php else: ?> <a href="/Admin/Tag/listall/status/3" class="btn btn-link"><?php endif; ?>
         全部 (<?php echo ($statusCount["allCount"]); ?>)</a>
+
+
    <?php if($status==0&&$status!=''&&$status!=null): ?><a href="/Admin/Tag/listall/status/0 " class="btn btn-info">
         <?php else: ?> <a href="/Admin/Tag/listall/status/0" class="btn btn-link"><?php endif; ?>
-      <i class="icon-spinner"></i> 审核  (<?php echo ($statusCount["auditCount"]); ?>)</a>
+      <i class="icon-spinner"></i> 网页 (<?php echo ($statusCount["auditCount"]); ?>)</a>
     <?php if($status==1 ): ?><a href="/Admin/Tag/listall/status/1" class="btn btn-info">
         <?php else: ?> <a href="/Admin/Tag/listall/status/1" class="btn btn-link"><?php endif; ?>
-      <i class="icon-unlock"></i> Enable  (<?php echo ($statusCount["enableCount"]); ?>)</a>
-    <?php if($status==2 ): ?><a href="/Admin/Tag/listall/status/2" class="btn btn-info">
-        <?php else: ?> <a href="/Admin/Tag/listall/status/2" class="btn btn-link"><?php endif; ?>
-      <i class="icon-lock"></i> Disable  (<?php echo ($statusCount["disableCount"]); ?>)</a>
+      <i class="icon-unlock"></i> 博客  (<?php echo ($statusCount["enableCount"]); ?>)</a>
 </div>
       </div>
     <div class="form-horizontal" role="form">
@@ -187,7 +197,7 @@
             <tbody>
         <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
                 <td class="col-md-0"><input type="checkbox" name="checkbox_id" value="<?php echo ($vo["dbid"]); ?>"></td>
-                <td class="col-md-2"><?php echo ($vo["tag"]); ?></td>
+                <td class="col-md-2"><?php echo ($vo["name"]); ?></td>
                 <td class="col-md-2">&nbsp;
                    <?php switch($vo["status"]): case "0": ?><i class="icon-spinner"></i><?php break;?>
                     <?php case "1": ?><i class="icon-unlock"></i><?php break;?>

@@ -45,6 +45,26 @@
       <!-- 添加表单 -->
       <form id="form-addInfo" class="form-horizontal" role="form" action="__URL__/saveInfo" >
         <input type="hidden" name="dbid" value="{$tag.dbid}"/>
+        <div class="form-group">
+          <label class="col-sm-3 control-label input-lg">类型</label>
+          <div class="col-sm-2 input-lg">
+            <div class="input-group ">
+              <span class="input-group-addon">
+                <input type="radio" name="status" value="1" <?php if($tag==null||$tag[status]==1) echo "checked";?> >
+              </span>
+              <span class="form-control input-lg">内容</span>
+            </div><!-- /input-group -->
+          </div>
+          <div class="col-sm-2 input-lg">
+            <div class="input-group ">
+              <span class="input-group-addon">
+                <input type="radio" name="status" value="2" <?php if($tag!=null&&$tag[status]==2) echo "checked";?> >
+              </span>
+              <span class="form-control input-lg">博客</span>
+            </div><!-- /input-group -->
+          </div>
+          
+        </div>
         </br>
         <div class="form-group">
           <label class="col-sm-2 control-label input-lg">标签</label>
@@ -72,54 +92,19 @@
     
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+    <a id="scrollUp" href="#top" title="" style="position: fixed; z-index: 2147483647; display: none;"> </a>
+  
     <script src="__PUBLIC__/js/jquery.min.js"></script>
     <script src="__PUBLIC__/js/bootstrap.js"></script>
-    <script src="__PUBLIC__/js/package/validform_v5.3.2_min.js"></script> 
+    <script src="__PUBLIC__/js/package/jquery.scrollUp.min.js"></script>
+    <script src="__PUBLIC__/js/package/admin.all.js"></script>
+    <script src="__PUBLIC__/js/package/web.all.js"></script>
+    <script src="__PUBLIC__/js/package/icheck.js"></script> 
+    <script src="__PUBLIC__/js/package/validform_v5.3.2_min.js"></script>
     <script type="text/javascript">
       $(function(){
-        var getInfoObj=function(){
-            return  $(this).parents(".form-group").children(".Validform_checktip").children(".info");
-          }
         
-        $("[datatype]").focusin(function(){
-          if(this.timeout){clearTimeout(this.timeout);}
-          var infoObj=getInfoObj.call(this);
-          if(infoObj.siblings(".Validform_right").length!=0){
-            return; 
-          }
-          infoObj.show().siblings().hide();
-          
-        }).focusout(function(){
-          var infoObj=getInfoObj.call(this);
-          this.timeout=setTimeout(function(){
-            infoObj.hide().siblings(".Validform_wrong,.Validform_loading").show();
-          },0);
-          
-        });
-
-        var demo = $("#form-addInfo").Validform({
-          btnSubmit:"#btn_sub",
-          tiptype:2,
-          postonce:true,
-          ajaxPost:true,
-          callback:function(data){ 
-              if(data.status==1){
-                $('.Validform_info').html(data.message);
-                setTimeout(function(){
-                  window.location.href=data.url;
-                },1000);
-              }else{
-                $('.Validform_info').html(data.message);
-                setTimeout(function(){
-                  window.location.reload();
-                },2000);
-              }
-          }
-        }); 
-      })
+      });
     </script>
   </body>
 </html>

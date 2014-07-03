@@ -5,9 +5,6 @@ use Think\Controller;
 class BlogController extends Controller {
 
     public function index(){
-    	$Tag = M('Tag');
-        $tags = $Tag->where('status=1')->select();
-        $this->assign('Tags',$tags);
         $Blog = D('Blog');
         import('ORG.Util.Page');
         $count      = $Blog->relation(true)->where('status=1')->count();

@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="__PUBLIC__/images/title-logo.gif">
 
-    <title>列表-标签管理</title>
+    <title>列表-类别管理</title>
 
     <!-- Bootstrap core CSS -->
     <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet">
@@ -41,22 +41,28 @@
       <div class="projects-header page-header">
           <h3 class="clearfix">
               <div class="pull-left"><i class="icon-list"> </i> 列表  </div>
-              <a class="btn btn-primary pull-right" href="__URL__/addinfo" role="button">
+              <a class="btn btn-primary pull-right" href="__URL__/addtype" role="button">
               <i class="icon-trash icon-plus"></i> 添加 </a> 
           </h3>
         <!-- top opreat bar.导航栏 -->
-        <include file="Admin@Tag/alert" />
+        <div class="alert alert-info">
+          <label>状态：</label>
+  
+          <a href="__URL__/listall/status/3" class="btn btn-link">
+            全部 ({$statusCount.allCount})</a>
+  
+          </div>
       </div>
     <div class="form-horizontal" role="form">
         <!-- top opreat bar.导航栏 -->
-      <include file="Admin@Tag/oprea-t" />
+     
         
       <div class="table-responsive">
           <table class="table">
             <thead>
               <tr>
                 <th class="col-md-0"></th>
-                <th class="col-md-2">标签</th>
+                <th class="col-md-2">类别</th>
                 <th class="col-md-2">状态</th>
                 <th class="col-md-6">操作</th>
               </tr>
@@ -65,27 +71,22 @@
         <volist name="list" id="vo">
               <tr>
                 <td class="col-md-0"><input type="checkbox" name="checkbox_id" value="{$vo.dbid}"></td>
-                <td class="col-md-2">{$vo.tag}</td>
+                <td class="col-md-2">{$vo.type}</td>
                 <td class="col-md-2">&nbsp;
-                   <switch name="vo.status"> 
-                    <case value="0"><i class="icon-spinner"></i></case>
-                    <case value="1"><i class="icon-unlock"></i></case>
-                    <case value="2"><i class="icon-lock"></i></case>
-                    <default />
-                  </switch>
+
+                  <i class="icon-unlock"></i>
+                   
                 </td>
                 <td class="col-md-3">
     
-                  <include file="Admin@Public/opreat"/>
+                 <a class="btn btn-default" href="__URL__/edittype?_id={$vo.dbid}"><i class="icon-edit"></i></a>
+                  <a class="btn btn-danger" href="javascript:checkDialog('__URL__/changeStatus?dbid={$vo.dbid}&status=2','确定选择删除？')"><i class="icon-trash"></i></a>
                 </td>
               </tr>
         </volist> 
             </tbody>
           </table>
       </div>
-
-            <!-- top opreat bar.导航栏 -->
-         <include file="Admin@Tag/oprea-t" />
         </div>
   </div> 
 </div>    

@@ -16,6 +16,12 @@ class WebModel extends RelationModel {
                 'foreign_key'=>'source_web',
                 'mapping_name' =>'website',
               ),
+            'Content'=>array(
+              'mapping_type'    =>self::HAS_ONE,
+                'class_name'    =>'web_content',
+                'foreign_key'=>'web_id',
+                'mapping_name' =>'content',
+              ),
         /*发布者 关联*/   
            /* 'web_user'=>array(
             	'mapping_type' =>self::BELONGS_TO ,

@@ -48,7 +48,7 @@
 
             <div class="navbar-collapse collapse">
               <!-- 获取当前的模块操作 -->
-              <?php  $controller=explode('/','/Admin/Tag/addinfo')[2];?>
+        
 
               <ul class="nav navbar-nav">
                 <?php if($controller=='Index'||$controller=='index'): ?><li class="active">
@@ -61,19 +61,30 @@
                     <li><a href="/Admin/Web/addinfo"><i class="icon-plus"></i>&nbsp;&nbsp; 添加</a></li>
                     <li class="divider"></li>
                     <li><a href="/Admin/Web/listall/status/0/type/0"><i class="icon-spinner"></i>&nbsp;&nbsp; 审核</a></li>
-                    <li><a href="/Admin/Web/listall/status/1/type/0"><i class="icon-unlock"></i>&nbsp;&nbsp;Enalbe</a></li>
+                    <li><a href="/Admin/Web/listall/status/1/type/0"><i class="icon-unlock"></i>&nbsp;&nbsp; Enalbe</a></li>
                     <li><a href="/Admin/Web/listall/status/2/type/0"><i class="icon-lock"></i>&nbsp;&nbsp; Disable</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/Admin/Web/listtype/status/0"><i class="icon-folder-close-alt"></i>&nbsp;&nbsp; 所属分类</a></li>
+                  </ul>
+                </li>
+                <?php if($controller=='Type' ): ?><li class="active dropdown">
+                  <?php else: ?> <li class="dropdown"><?php endif; ?> 
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 分类 <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/Admin/Type/listweb"><i class="icon-list"></i>&nbsp;&nbsp; 网页</a></li>
+                    <li><a href="/Admin/Type/addweb"><i class="icon-plus"></i>&nbsp;&nbsp; 添加</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/Admin/Type/listblog"><i class="icon-list"></i>&nbsp;&nbsp; 博客</a></li>
+                    <li><a href="/Admin/Type/addblog"><i class="icon-plus"></i>&nbsp;&nbsp; 添加</a></li>
                   </ul>
                 </li>
                 <?php if($controller=='Tag' ): ?><li class="active dropdown">
                   <?php else: ?> <li class="dropdown"><?php endif; ?> 
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 标签 <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="/Admin/Tag/addinfo"><i class="icon-plus"></i>&nbsp;&nbsp; 添加</a></li>
+                    <li><a href="/Admin/Tag/listweb"><i class="icon-list"></i>&nbsp;&nbsp; 网页</a></li>
                     <li class="divider"></li>
-                    <li><a href="/Admin/Tag/listall/status/0"><i class="icon-spinner"></i>&nbsp;&nbsp; 审核</a></li>
-                    <li><a href="/Admin/Tag/listall/status/1"><i class="icon-unlock"></i>&nbsp;&nbsp;Enalbe</a></li>
-                    <li><a href="/Admin/Tag/listall/status/2"><i class="icon-lock"></i>&nbsp;&nbsp; Disable</a></li>
+                    <li><a href="/Admin/Tag/listblog"><i class="icon-list"></i>&nbsp;&nbsp; 博客</a></li>
                   </ul>
                 </li>
                  <?php if($controller=='Website' ): ?><li class="active dropdown">
@@ -96,6 +107,8 @@
                     <li><a href="/Admin/Blog/listall/status/0"><i class="icon-spinner"></i>&nbsp;&nbsp; 审核</a></li>
                     <li><a href="/Admin/Blog/listall/status/1"><i class="icon-unlock"></i>&nbsp;&nbsp;Enalbe</a></li>
                     <li><a href="/Admin/Blog/listall/status/2"><i class="icon-lock"></i>&nbsp;&nbsp; Disable</a></li>
+                     <li class="divider"></li>
+                    <li><a href="/Admin/Blog/listtype/status/0"><i class="icon-folder-close-alt"></i>&nbsp;&nbsp; 所属分类</a></li>
                   </ul>
                 </li>
                <?php if($controller=='User' ): ?><li class="active dropdown">
@@ -136,15 +149,28 @@
       <form id="form-addInfo" class="form-horizontal" role="form" action="/Admin/Tag/saveInfo" >
         </br>
         <div class="form-group">
-          <label class="col-sm-2 control-label input-lg">标签</label>
-          <div class="col-sm-7">
+          <label class="col-sm-3 control-label input-lg">标签</label>
+          <input type="hidden" id="type_id" name="type_id" value="1"/>
+          <div class="col-sm-2 input-lg">
+           <div class="btn-group ">
+              <button type="button" class="btn btn-default input-lg">请选择<?php echo ($isType); ?>分类</button>
+              <button type="button" class="btn btn-default dropdown-toggle input-lg" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <?php if(is_array($types)): $i = 0; $__LIST__ = $types;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$type): $mod = ($i % 2 );++$i;?><li><a href="javascript:void(0)"><?php echo ($type["type"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-3">
             <input type="text" class="form-control input-lg" name="tag" placeholder="Tag" datatype="*1-6" errormsg="<i class='icon-warning-sign'></i> 标题在1~6位之间" ajaxurl="validName"  value="" nullmsg="<i class='icon-warning-sign'></i> 请填写标签." />
           </div>
           <div class="Validform_checktip">
              <div class="info">标签至少1个字符,最多6个字符<span class="dec"><s class="dec1">&#9670;</s><s class="dec2">&#9670;</s></span></div>
           </div>
         </div>   
-
+       
         </br>
         
 
@@ -161,53 +187,39 @@
     
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+  
+   <a id="scrollUp" href="#top" title="" style="position: fixed; z-index: 2147483647; display: none;"> </a>
+  
     <script src="/Public/js/jquery.min.js"></script>
     <script src="/Public/js/bootstrap.js"></script>
+    <script src="/Public/js/package/jquery.scrollUp.min.js"></script>
+    <script src="/Public/js/package/admin.all.js"></script>
+    <script src="/Public/js/package/web.all.js"></script>
+    <script src="/Public/js/package/icheck.js"></script> 
     <script src="/Public/js/package/validform_v5.3.2_min.js"></script> 
     <script type="text/javascript">
+    $('input').on('ifChecked', function(event){
+        var status = $(this).val();
+        showSelect(status);
+     });
+    function showSelect(status){
+      switch(status){
+          case "1":
+          $("#web_type").show();
+          $("#blog_type").hide();
+          break;
+          case "2":
+          $("#web_type").hide();
+          $("#blog_type").show();
+          break;
+          default:
+           $("#web_type").show();
+          $("#blog_type").hide();
+        }
+    }
       $(function(){
-        var getInfoObj=function(){
-            return  $(this).parents(".form-group").children(".Validform_checktip").children(".info");
-          }
         
-        $("[datatype]").focusin(function(){
-          if(this.timeout){clearTimeout(this.timeout);}
-          var infoObj=getInfoObj.call(this);
-          if(infoObj.siblings(".Validform_right").length!=0){
-            return; 
-          }
-          infoObj.show().siblings().hide();
-          
-        }).focusout(function(){
-          var infoObj=getInfoObj.call(this);
-          this.timeout=setTimeout(function(){
-            infoObj.hide().siblings(".Validform_wrong,.Validform_loading").show();
-          },0);
-          
-        });
 
-        var demo = $("#form-addInfo").Validform({
-          btnSubmit:"#btn_sub",
-          tiptype:2,
-          postonce:true,
-          ajaxPost:true,
-          callback:function(data){ 
-              if(data.status==1){
-                $('.Validform_info').html(data.message);
-                setTimeout(function(){
-                  window.location.href=data.url;
-                },1000);
-              }else{
-                $('.Validform_info').html(data.message);
-                setTimeout(function(){
-                  window.location.reload();
-                },2000);
-              }
-          }
-        }); 
       })
     </script>
   </body>

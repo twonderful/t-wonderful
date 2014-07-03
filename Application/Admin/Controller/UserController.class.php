@@ -6,6 +6,8 @@ class UserController extends Controller {
     public function _initialize(){
         if(!isset($_SESSION['admin'])){
             $this->redirect('Index/login');
+        }else{
+          $this->assign('controller','User');
         }
     }
     /*添加*/

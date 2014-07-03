@@ -8,12 +8,33 @@ class WebController extends Controller {
     public function _initialize(){
         if(!isset($_SESSION['admin'])){
             $this->redirect('Index/login');
+        }else{
+           $this->assign('controller','Web');
         }
     }
-    /*添加*/
     public function addInfo(){
         
         $this->display(); 
+    }
+    public function content($dbid){
+        if($dbid>0){
+            $Web = D('Web');
+            $data = $Web->relation(true)->find($dbid);
+            $this->web=$data;
+        }else{
+             $this->error('数据错误！');
+        } 
+        $this->display();
+    }
+    public function editInfo($_id){
+        if($_id>0){
+            $Web = D('Web');
+            $data = $Web->relation(true)->find($_id);
+            $this->web=$data;
+        }else{
+             $this->error('数据错误！');
+        } 
+        $this->display();
     }
     /* 列表 所有 正常显示*/
     public function listAll(){
@@ -29,13 +50,12 @@ class WebController extends Controller {
         $count      = $Web->where($condition)->count();// 查询满足要求的总记录数 $map表示查询条件
         $Page       = new \Think\Page($count,2);// 实例化分页类 传入总记录数
         $Page->setConfig('header','个会员');
-        //$Page->parameter="test";
-        // 进行分页数据查询
+    
         $list = $Web->where($condition)->order('date DESC ')->limit($Page->firstRow.','.$Page->listRows)->select();
-        $this->assign('list',$list);// 赋值数据集
+        $this->assign('list',$list);
         $map = array('status' =>$status,'type'=>$type);
         $Page->parameter=$map;
-        $show = $Page->show();// 分页显示输出*/
+        $show = $Page->show();
         $this->assign('page',$show);// 赋值分页输出
         $this->assign('status',$status);
         /*  不同类型统计*/
@@ -51,16 +71,7 @@ class WebController extends Controller {
         $this->assign('typeCount',$typeCount);
         $this->display(); // 输出模板
     }
-    public function editInfo($_id){
-        if($_id>0){
-            $Web = D('Web');
-            $data = $Web->relation(true)->find($_id);
-            $this->web=$data;
-        }else{
-             $this->error('数据错误！');
-        } 
-        $this->display('editInfo');
-    }
+    
     public function viewInfo($_id){
         if($_id>0){
             $Web = D('Web');
@@ -166,33 +177,52 @@ class WebController extends Controller {
         $data["image_url"] = $image_url;
         $data["user_id"] =  $user_id;
         $data["date"]    = date('Y-m-d H:i:s');
-        $data["count"]    = array(
-           'click' =>'0',
-           'favorite' =>'0',
-           'comment' =>'0',
-        );
         if($dbid!=null&&$dbid!=""){
              $editResult = $Web->where("dbid=%d",$dbid)->save($data);
             if($editResult) {
-              $arr = array("status"=>'1',"message"=>"修改文章成功","url"=>"listall");
+              $arr = array("status"=>'1',"message"=>"修改信息成功","url"=>"content","dbid"=>$dbid);
             }else{
-                 $arr = array("status"=>'0',"message"=>"修改文章失败");
+                 $arr = array("status"=>'0',"message"=>"修改信息失败");
             }
             
         }else{
+           $data["count"]    = array(
+             'click' =>'0',
+             'favorite' =>'0',
+             'comment' =>'0',
+           );
+           $data["content"]    = array(
+             'content' =>'',
+           );
             $data["status"] = 0;
            $addResult =   $Web->relation("count")->add($data);
             if($addResult) {
-              $arr = array("status"=>'1',"message"=>"添加文章成功","url"=>"listall");
+              $arr = array("status"=>'1',"message"=>"添加信息成功","url"=>"content","dbid"=>$addResult);
             }else{
-                 $arr = array("status"=>'0',"message"=>"添加文章失败");
+                 $arr = array("status"=>'0',"message"=>"添加信息失败");
             }
         }
         $json_str = json_encode($arr);
         echo $json_str;
     }
+    public function saveContent(){
+        $Web_content   =   D('Web_content');
+        $dbid = I('post.dbid','','htmlspecialchars');
+        $content = I('post.content','','');
+        $data = array();
+        $data["content"] = $content;
+        $data["date"]    = date('Y-m-d H:i:s');
+        if($dbid!=null&&$dbid!=""){
+             $result = $Web_content->where("dbid=%d",$dbid)->save($data);
+            if($result) {
+                $arr = array("status"=>'1',"message"=>"编辑内容成功","url"=>"listall","dbid"=>"");
+            }else{
+                $arr = array("status"=>'0',"message"=>"编辑内容失败");
+            }   
+        }
+        echo json_encode($arr);
+    }
 
-    /*系统选择 website website_all*/
     public function website_all(){
         $Website = M('Website');
         $data = $Website->select();
@@ -200,16 +230,13 @@ class WebController extends Controller {
         $json_str = json_encode($arr);
         echo $json_str;
     }
-    /*自定义website customWebsite*/
     public function customWebsite(){
         $name = I('post.name','','htmlspecialchars');
         $link = I('post.link','','htmlspecialchars');
-        /*检测是否已存在同样的name like*/
         $Website = D('Website');
         $map['name'] = $name;
         $result = $Website->where($map)->select();
         if(empty($result)){
-            //不存在，即执行添加，return dbid
             $data = array();
             $data["name"] = $name;
             $data["link"] = $link;
@@ -222,15 +249,14 @@ class WebController extends Controller {
                 $arr = array("status"=>'0');
             }
         }else{
-            //存在，即直接返回此ID，
-            $arr = array("status"=>'1',"dbid"=>$result[0]['dbid'],
-                "wsName"=>$result[0]['name'],"wsLink"=>$result[0]['link']
-                );
+            $arr = array("status"=>'1',
+                "dbid"=>$result[0]['dbid'],
+                "wsName"=>$result[0]['name'],
+                "wsLink"=>$result[0]['link']
+            );
         }    
-        $json_str = json_encode($arr);
-        echo $json_str;
+        echo json_encode($arr);
     }
-    /* 批量删除 ids*/
     public function checkDeletes($dbids){
         $Web = M('Web');
         if($dbids!=null&&$dbids.length>0){
@@ -246,7 +272,6 @@ class WebController extends Controller {
         $json_str = json_encode($arr);
         echo $json_str;
     }
-    /* 修改当前状态status*/
     public function changeStatus($dbid,$status){
         if($dbid!=null&&$dbid>0){
              $Web   =   D('Web');
@@ -265,7 +290,6 @@ class WebController extends Controller {
          $json_str = json_encode($arr);
          echo $json_str;
     }
-    /*批量 修改为回收站*/
     public function checkChanges($status,$dbids){
       if($dbids!=null&&$dbids!=""){
            $Web = D("Web");
@@ -282,5 +306,82 @@ class WebController extends Controller {
         }
         $json_str = json_encode($arr);
         echo $json_str;
+    }
+    public function addType(){
+       
+        $this->display();
+    }
+    public function edittype($_id){
+        if($_id>0){
+            $Web_type = M('Web_type');
+            $data = $Web_type->find($_id);
+            $this->web_type=$data;
+        }else{
+             $this->error('数据错误！');
+        } 
+        $this->display("addType");
+    }
+    public function listType($status){
+        $Web_type = M('Web_type');
+        $status=($status!=null&&$status!="") ? $status : 3;
+        $condition = array();
+        $status==3? '':$condition['status']=$status;
+        /*分页操作*/
+        $count      = $Web_type->where($condition)->count();
+        $Page       = new \Think\Page($count,15);
+        $list = $Web_type->where($condition)->order('dbid DESC ')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('list',$list);
+        $map = array('status' =>$status);
+        $Page->parameter=$map;
+        $show = $Page->show();
+        $this->assign('page',$show);
+        $this->assign('status',$status);
+        /*  不同类型统计*/
+        $allCount = $Web_type->where()->count();
+        $auditCount = $Web_type->where('status=0')->count();
+        $enableCount = $Web_type->where('status=1')->count();
+        $disableCount = $Web_type->where('status=2')->count();
+
+        $statusCount = array('allCount' => $allCount,'auditCount' => $auditCount,'enableCount'=> $enableCount,'disableCount'=> $disableCount);
+        $this->assign('statusCount',$statusCount);
+        $this->display(); // 输出模板
+    }
+    public function saveType(){
+        $Web_type   =   D('Web_type');
+        $dbid = I('post.dbid','','htmlspecialchars');
+        $type = I('post.type','','htmlspecialchars');
+        $data = array();
+        $data["type"] = $type;
+        $data["date"]    = date('Y-m-d H:i:s');
+        if($dbid!=null&&$dbid!=""){
+             $editResult = $Web_type->where("dbid=%d",$dbid)->save($data);
+            if($editResult) {
+              $arr = array("status"=>'1',"message"=>"修改分类成功","url"=>"listtype/status/3");
+            }else{
+                 $arr = array("status"=>'0',"message"=>"修改分类失败");
+            }
+            
+        }else{
+            $data["status"] = 0;
+           $addResult =   $Web_type->add($data);
+            if($addResult) {
+              $arr = array("status"=>'1',"message"=>"添加分类成功","url"=>"listtype/status/3");
+            }else{
+                 $arr = array("status"=>'0',"message"=>"添加分类失败");
+            }
+        }
+        $json_str = json_encode($arr);
+        echo $json_str;
+    }
+    public function validName(){
+      $type =  $_POST["param"];
+      $Web_type = M('Web_type');
+      $map['type'] = $type;
+      $result = $Web_type->where($map)->select();
+      if(empty($result)){
+        echo "y";
+      }else{
+        echo "<i class='icon-warning-sign'></i> 此标签已存在";
+      }
     }
 }

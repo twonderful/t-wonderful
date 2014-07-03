@@ -25,14 +25,13 @@
 	</div>
 	<div class="search-model">
 			 <div class="search-body">
-          <ul class="tagmenu">
-              <?php if(is_array($Tags)): $i = 0; $__LIST__ = $Tags;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$tag): $mod = ($i % 2 );++$i;?><li><a href="" class="btn btn-warning btn-mgr-1"><?php echo ($tag["tag"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?> 
-          </ul>
+              <?php if(is_array($Tags)): $i = 0; $__LIST__ = $Tags;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$tag): $mod = ($i % 2 );++$i;?><a href="" class="btn btn-warning btn-mgr-1"><?php echo ($tag["tag"]); ?></a><?php endforeach; endif; else: echo "" ;endif; ?> 
+
        </div>
        <div class="search-footer">
           <a href="javascript:toggleSearch();" class="btn-colose"><--- 关 闭</a>
        </div>
-		</div>
+	</div>
 	<div class="container">
 		<div class="main">
 			<div class="header">

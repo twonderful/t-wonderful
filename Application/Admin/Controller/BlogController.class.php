@@ -6,6 +6,8 @@ class BlogController extends Controller {
     public function _initialize(){
         if(!isset($_SESSION['admin'])){
             $this->redirect('Index/login');
+        }else{
+            $this->assign('controller','Blog');
         }
     }
     /*添加*/
@@ -16,27 +18,12 @@ class BlogController extends Controller {
      public function editInfo($_id){
         if($_id>0){
             $Blog = D('Blog');
-            $data = $Blog->find($_id);
+            $data = $Blog->relation(true)->find($_id);
             $this->blog=$data;
         }else{
              $this->error('数据错误！');
         } 
         $this->display('editInfo');
-    }
-    /* 会员列表 所有 正常显示*/
-    public function listMember($status){
-        $Blog = M('Blog');
-        $condition= array();
-        $condition['type'] = 1;
-        $condition['status'] =$status;
-        $count      = $Blog->where($condition)->count(); 
-        $Page       = new \Think\Page($count,2);
-        $list = $Blog->where($condition)->order('date DESC ')->limit($Page->firstRow.','.$Page->listRows)->select();
-        $this->assign('list',$list);
-        $show = $Page->show();
-        $this->assign('page',$show);
-        $this->assign('status',$status);  
-        $this->display();
     }
      /* 管理员列表 待审核 */
     public function listAll(){
@@ -73,41 +60,46 @@ class BlogController extends Controller {
         $title = I('post.title','','htmlspecialchars');
         $content = I('post.content','','');
         $introduction = I('post.introduction','','htmlspecialchars');
-        $tags = I('post.tags','','htmlspecialchars');
-        $request_url = I('post.request_url','','htmlspecialchars');
+        $Blog_types = I('post.Blog_types','','htmlspecialchars');
         $image_url = I('post.image_url','','htmlspecialchars');
         $data = array();
-        $data["title"]    = $title;
-        $data["content"]    = $content;
+        $data["title"]  = $title;
+        $data["content"]  = $content;
         $data["introduction"] = $introduction;
-        $data["tags"] = $tags;
-        $data["request_url"] = $request_url;
+        $data["Blog_types"] = $Blog_types;
         $data["image_url"] = $image_url;
         $data["date"]    = date('Y-m-d');
         $data["datetime"]    = date('Y-m-d H:i:s');
-        $data["count"]    = array(
-           'click' =>'0',
-           'favorite' =>'0',
-           'comment' =>'0',
-        );
+       
         if($dbid!=null&&$dbid!=""){
-             $editResult = $Blog->where("dbid=%d",$dbid)->save($data);
+            $data["content"]    = array(
+              'blog_id' => $dbid,
+             'content' => $content,
+            );
+             $editResult = $Blog->where("dbid=%d",$dbid)->relation(true)->save($data);
             if($editResult) {
-              $arr = array("status"=>'1',"message"=>"修改博客成功","url"=>"");
+              $arr = array("status"=>'1',"message"=>"修改博客成功","url"=>"listAll");
             }else{
                  $arr = array("status"=>'0',"message"=>"修改博客失败");
             }
         }else{
+           $data["count"]    = array(
+             'click' =>'0',
+             'favorite' =>'0',
+             'comment' =>'0',
+           );
+           $data["content"]    = array(
+             'content' => $content,
+           );
           $data["status"] = 0;
-          $addResult =   $Blog->relation("count")->add($data);
+          $addResult =   $Blog->relation(true)->add($data);
           if($addResult) {
               $arr = array("status"=>'1',"message"=>"添加博客成功","url"=>"listAll");
           }else{
               $arr = array("status"=>'0',"message"=>"添加博客失败");
           }
         }
-        $json_str = json_encode($arr);
-        echo $json_str;
+        echo json_encode($arr);
     }
 
     /* 批量删除 ids*/
@@ -161,5 +153,75 @@ class BlogController extends Controller {
         }
         $json_str = json_encode($arr);
         echo $json_str;
+    }
+    public function addType(){
+       
+        $this->display();
+    }
+    public function edittype($_id){
+        if($_id>0){
+            $Blog_type = M('Blog_type');
+            $data = $Blog_type->find($_id);
+            $this->blog_type=$data;
+        }else{
+             $this->error('数据错误！');
+        } 
+        $this->display("addType");
+    }
+    public function listType($status){
+        $Blog_type = M('Blog_type');
+        $status=($status!=null&&$status!="") ? $status : 3;
+        $condition = array();
+        $status==3? '':$condition['status']=$status;
+        /*分页操作*/
+        $count      = $Blog_type->where($condition)->count();
+        $Page       = new \Think\Page($count,15);
+        $list = $Blog_type->where($condition)->order('date DESC ')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('list',$list);
+        $map = array('status' =>$status);
+        $Page->parameter=$map;
+        $show = $Page->show();
+        $this->assign('page',$show);
+        $this->assign('status',$status);
+       
+        $this->display(); 
+    }
+    public function saveType(){
+        $Blog_type   =   D('Blog_type');
+        $dbid = I('post.dbid','','htmlspecialchars');
+        $type = I('post.type','','htmlspecialchars');
+        $data = array();
+        $data["type"] = $type;
+        $data["date"]    = date('Y-m-d H:i:s');
+        if($dbid!=null&&$dbid!=""){
+             $editResult = $Blog_type->where("dbid=%d",$dbid)->save($data);
+            if($editResult) {
+              $arr = array("status"=>'1',"message"=>"修改分类成功","url"=>"listtype/status/3");
+            }else{
+                 $arr = array("status"=>'0',"message"=>"修改分类失败");
+            }
+            
+        }else{
+            $data["status"] = 0;
+           $addResult =   $Blog_type->add($data);
+            if($addResult) {
+              $arr = array("status"=>'1',"message"=>"添加分类成功","url"=>"listtype/status/3");
+            }else{
+                 $arr = array("status"=>'0',"message"=>"添加分类失败");
+            }
+        }
+        $json_str = json_encode($arr);
+        echo $json_str;
+    }
+    public function validName(){
+      $type =  $_POST["param"];
+      $Blog_type = M('Blog_type');
+      $map['type'] = $type;
+      $result = $Blog_type->where($map)->select();
+      if(empty($result)){
+        echo "y";
+      }else{
+        echo "<i class='icon-warning-sign'></i> 此标签已存在";
+      }
     }
 }
